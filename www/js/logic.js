@@ -164,3 +164,24 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+
+  const installBtn = document.getElementById('install-btn');
+  if (installBtn) installBtn.style.display = 'block';
+
+  installBtn.addEventListener('click', () => {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install');
+      } else {
+        console.log('User dismissed the install');
+      }
+      deferredPrompt = null;
+    });
+  });
+});
