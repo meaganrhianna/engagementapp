@@ -1,7 +1,7 @@
 {
   "name": "Patient Engagement Toolkit",
   "short_name": "EngageTool",
-  "start_url": "index.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0055aa",
