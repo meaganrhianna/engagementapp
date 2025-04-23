@@ -153,27 +153,14 @@ function goToPage(pageId) {
   if (target) fadeIn(target);
 }
 
-self.addEventListener('install', (event) => {
-  console.log('[ServiceWorker] Installed');
-  event.waitUntil(
-    caches.open('v1').then((cache) => {
-      return cache.addAll([
-        './',
-        './index.html',
-        './results.html',
-        './styles/styles.css',
-        './js/logic.js',
-        './manifest.json'
-      ]);
-    })
-  );
-});
-
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
-  );
-});
-
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(reg => {
+        console.log('Service Worker registered with scope:', reg.scope);
+      })
+      .catch(err => {
+        console.error('Service Worker registration failed:', err);
+      });
+  });
+}
