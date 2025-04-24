@@ -84,23 +84,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // === Submit Button Logic
-submitBtn.addEventListener("click", () => {
-  const nextSection = document.getElementById("page1b");
-  if (nextSection) {
-    fadeIn(nextSection);
-
-    // Wait for fadeIn to complete, then scroll to place element mid-screen
-    setTimeout(() => {
-      const rect = nextSection.getBoundingClientRect();
-      const offset = rect.top + window.scrollY - (window.innerHeight / 2) + (rect.height / 2);
-      window.scrollTo({
-        top: offset,
-        behavior: "smooth"
-      });
-    }, 350);
+  // === Submit button (shows next section within same page)
+  const submitBtn = document.getElementById("submit-btn");
+  if (submitBtn) {
+    submitBtn.addEventListener("click", () => {
+      const nextSection = document.getElementById("page1b");
+      if (nextSection) fadeIn(nextSection);
+      submitBtn.scrollIntoView({ behavior: "smooth", block: "end" });
+    });
   }
-});
 
 
 
