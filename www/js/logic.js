@@ -89,18 +89,18 @@ const submitBtn = document.getElementById("submit-btn");
 if (submitBtn) {
   submitBtn.addEventListener("click", () => {
     const nextSection = document.getElementById("page1b");
-    if (nextSection) fadeIn(nextSection);
+    const scrollTarget = document.getElementById("scrollTarget");
 
-    submitBtn.scrollIntoView({ behavior: "smooth", block: "end" });
+    if (nextSection) {
+      fadeIn(nextSection);
 
-    // After 1 second, scroll down by 600px
-    setTimeout(() => {
-      window.scrollBy({
-        top: 600,
-        left: 0,
-        behavior: "smooth"
-      });
-    }, 2000); // 1000ms = 1 second
+      // Delay just long enough for fadeIn, then scroll to target
+      setTimeout(() => {
+        if (scrollTarget) {
+          scrollTarget.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 350); // matches fadeIn duration
+    }
   });
 }
 
