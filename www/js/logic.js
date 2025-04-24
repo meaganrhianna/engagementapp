@@ -90,12 +90,18 @@ submitBtn.addEventListener("click", () => {
   if (nextSection) {
     fadeIn(nextSection);
 
-    // Wait for fadeIn to finish, then scroll to the element
+    // Wait for fadeIn to complete, then scroll to place element mid-screen
     setTimeout(() => {
-      nextSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 350); // Match or slightly exceed fadeIn duration
+      const rect = nextSection.getBoundingClientRect();
+      const offset = rect.top + window.scrollY - (window.innerHeight / 2) + (rect.height / 2);
+      window.scrollTo({
+        top: offset,
+        behavior: "smooth"
+      });
+    }, 350);
   }
 });
+
 
 
 
