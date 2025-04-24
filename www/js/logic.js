@@ -83,15 +83,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === Submit button (shows next section within same page)
-  const submitBtn = document.getElementById("submit-btn");
-  if (submitBtn) {
-    submitBtn.addEventListener("click", () => {
-      const nextSection = document.getElementById("page1b");
-      if (nextSection) fadeIn(nextSection);
-      submitBtn.scrollIntoView({ behavior: "smooth", block: "end" });
+submitBtn.addEventListener("click", () => {
+  const nextSection = document.getElementById("page1b");
+  if (nextSection) fadeIn(nextSection);
+
+  // Smooth scroll down by half the viewport height
+  setTimeout(() => {
+    window.scrollBy({
+      top: window.innerHeight / 2,
+      left: 0,
+      behavior: "smooth"
     });
-  }
+  }, 300); // Delay to match the fadeIn duration
+});
+
 
   // === Next button (navigates to results.html with slide)
   const nextBtn = document.getElementById("next-btn");
