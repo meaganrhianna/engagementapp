@@ -99,7 +99,7 @@ if (submitBtn) {
         if (scrollTarget) {
           scrollTarget.scrollIntoView({ behavior: "smooth" });
         }
-      }, 350); // matches fadeIn duration
+      }, 1000); // matches fadeIn duration
     }
   });
 }
