@@ -100,7 +100,7 @@ if (submitBtn) {
         left: 0,
         behavior: "smooth"
       });
-    }, 1000); // 1000ms = 1 second
+    }, 2000); // 1000ms = 1 second
   });
 }
 
