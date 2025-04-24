@@ -87,15 +87,16 @@ submitBtn.addEventListener("click", () => {
   const nextSection = document.getElementById("page1b");
   if (nextSection) fadeIn(nextSection);
 
-  // Smooth scroll down by half the viewport height
+  // Delay scroll slightly after fadeIn so the DOM has time to reflow
   setTimeout(() => {
     window.scrollBy({
       top: window.innerHeight / 2,
       left: 0,
       behavior: "smooth"
     });
-  }, 300); // Delay to match the fadeIn duration
+  }, 350); // Slightly longer than fadeIn (300ms)
 });
+
 
 
   // === Next button (navigates to results.html with slide)
