@@ -84,15 +84,26 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // === Submit button (shows next section within same page)
-  const submitBtn = document.getElementById("submit-btn");
-  if (submitBtn) {
-    submitBtn.addEventListener("click", () => {
-      const nextSection = document.getElementById("page1b");
-      if (nextSection) fadeIn(nextSection);
-      submitBtn.scrollIntoView({ behavior: "smooth", block: "end" });
-    });
-  }
+// === Submit button (shows next section within same page)
+const submitBtn = document.getElementById("submit-btn");
+if (submitBtn) {
+  submitBtn.addEventListener("click", () => {
+    const nextSection = document.getElementById("page1b");
+    if (nextSection) fadeIn(nextSection);
+
+    submitBtn.scrollIntoView({ behavior: "smooth", block: "end" });
+
+    // After 1 second, scroll down by 600px
+    setTimeout(() => {
+      window.scrollBy({
+        top: 600,
+        left: 0,
+        behavior: "smooth"
+      });
+    }, 1000); // 1000ms = 1 second
+  });
+}
+
 
 
 
