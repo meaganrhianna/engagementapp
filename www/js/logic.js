@@ -83,19 +83,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+
+  // === Submit Button Logic
 submitBtn.addEventListener("click", () => {
   const nextSection = document.getElementById("page1b");
-  if (nextSection) fadeIn(nextSection);
+  if (nextSection) {
+    fadeIn(nextSection);
 
-  // Delay scroll slightly after fadeIn so the DOM has time to reflow
-  setTimeout(() => {
-    window.scrollBy({
-      top: window.innerHeight / 2,
-      left: 0,
-      behavior: "smooth"
-    });
-  }, 350); // Slightly longer than fadeIn (300ms)
+    // Wait for fadeIn to finish, then scroll to the element
+    setTimeout(() => {
+      nextSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 350); // Match or slightly exceed fadeIn duration
+  }
 });
+
 
 
 
