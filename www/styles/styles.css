@@ -126,7 +126,7 @@ margin-top: 0.5rem;
 .intro-container img {
   width: 15%;
   min-width: 100px;
-  max-width: 200px;
+  max-width: 150px;
 }
 
 /* === Intro layout: image + title side-by-side === */
